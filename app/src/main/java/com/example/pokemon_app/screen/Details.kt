@@ -25,7 +25,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
 import com.example.pokemon_app.config.PokemoHttp
@@ -76,6 +78,8 @@ fun Details(modifier: Modifier = Modifier, name: String, navController: NavHostC
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             pokemon?.let { dado ->
+                Text(text = dado.name.uppercase(), fontSize = 25.sp, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(10.dp))
                 AsyncImage(
                     modifier = Modifier.size(200.dp),
                     model = dado.sprites.other.showdown.frontDefault,
