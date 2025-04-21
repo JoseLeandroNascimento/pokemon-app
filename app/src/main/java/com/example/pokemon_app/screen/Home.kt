@@ -16,6 +16,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.pokemon_app.components.PokemonCardItem
 import com.example.pokemon_app.config.PokemoHttp
 import com.example.pokemon_app.data.PokemonData
@@ -26,7 +28,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 @Composable
-fun Home(modifier: Modifier = Modifier) {
+fun Home(modifier: Modifier = Modifier,navController: NavHostController? = null) {
 
     var pokemons by remember { mutableStateOf<ResponsePage<Pokemon>?>(null) }
 
@@ -50,6 +52,10 @@ fun Home(modifier: Modifier = Modifier) {
         })
     }
 
+    fun verDetalhe(name:String){
+        navController?.navigate("details")
+    }
+
     LazyVerticalGrid(
         modifier = modifier
             .padding(horizontal = 2.dp)
@@ -63,7 +69,7 @@ fun Home(modifier: Modifier = Modifier) {
     ) {
         pokemons?.let { data ->
             items(data.results) {
-                PokemonCardItem(name = it.name)
+                PokemonCardItem(name = it.name, onClick = {verDetalhe(it)})
             }
         }
     }

@@ -15,7 +15,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokemon_app.screen.Home
+import androidx.navigation.compose.rememberNavController
 import com.example.pokemon_app.ui.theme.PokemonappTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +41,10 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) { innerPadding ->
-                    Home(modifier = Modifier.padding(innerPadding))
+
+                    val navController = rememberNavController()
+
+                    Router(modifier = Modifier.padding(innerPadding),navController)
                 }
             }
         }
