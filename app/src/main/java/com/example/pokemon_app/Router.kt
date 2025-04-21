@@ -15,8 +15,9 @@ fun Router(modifier: Modifier = Modifier, navController: NavHostController) {
         composable("home") {
             Home(modifier, navController)
         }
-        composable("details") {
-            Details(modifier, navController)
+        composable("details/{name}") { backStackEntry ->
+            val name = backStackEntry.arguments?.getString("name") ?: ""
+            Details(modifier, name, navController)
         }
     }
 }

@@ -53,7 +53,7 @@ fun Home(modifier: Modifier = Modifier,navController: NavHostController? = null)
     }
 
     fun verDetalhe(name:String){
-        navController?.navigate("details")
+        navController?.navigate("details/${name}")
     }
 
     LazyVerticalGrid(
