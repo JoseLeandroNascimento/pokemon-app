@@ -52,7 +52,7 @@ fun Home(modifier: Modifier = Modifier) {
 
     LazyVerticalGrid(
         modifier = modifier
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 2.dp)
             .fillMaxSize()
         ,
         columns = GridCells.Fixed(3),
